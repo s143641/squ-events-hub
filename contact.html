@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us - SQU Events Hub</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body class="bg-light d-flex flex-column min-vh-100">
+  <!--navigation bar for all pages-->
+<nav class="navbar navbar-expand-lg bg-black text-white" >
+  <div class="container">
+
+    <div class="d-flex align-items-center text-white">
+      <img src="images/logo.png" width="50" class="me-2">
+      <div>
+        <h4 class="mb-0">SQU Events Hub</h4>
+        <h6 class="text-white">Inspiring Campus Life</h6>
+      </div>
+    </div>
+
+    <button class="navbar-toggler bg-light" data-bs-toggle="collapse" data-bs-target="#nav"></button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="nav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="events.html">Events</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="register.html">Register</a></li>
+        <li class="nav-item"><a class="nav-link text-warning active" href="contact.html">Contact</a></li>
+
+        <li class="nav-item"><a class="nav-link text-white" href="Questionnaire.html">Feedback</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="calculator.html">Calculator</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="funpage.html">Fun</a></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+<!--section displaying contact methods-->
+<div class="container">
+    <h2 class="text-center mt-4"> Contact Us Through:</h2>
+
+  <div class="row justify-content-center g-4">
+     <!--cards for computer science contact-->
+    <div class="col-12">
+      <div class="card text-center shadow border-0 p-3 mt-4 text-primary">
+        <h5>Computer Science</h5>
+        <p>Building 23</p>
+        <p>+968 2414 1111</p>
+        <!--button to call the number-->
+        <a href="tel:+96824141111" class="btn btn-secondary">
+          Call Now
+        </a>
+      </div>
+    </div>
+    <!--card for student affairs-->
+    <div class="col-12">
+      <div class="card text-center shadow border-0 p-3 text-primary">
+        <h5>Student Affairs</h5>
+        <p>Main Campus</p>
+        <p>+968 2414 2222</p>
+        <!--button to call-->
+        <a href="tel:+96824142222" class="btn btn-secondary">
+          Call Now
+        </a>
+      </div>
+    </div>
+    
+    <div class="col-12">
+      <div class="card text-center shadow border-0 p-3 mb-4 text-primary">
+        <h5>Events Office</h5>
+        <p>Administration Block</p>
+        <p>+968 2414 3333</p>
+
+        <a href="tel:+9682414333" class="btn btn-secondary">
+          Call Now
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!--form to send a message-->
+  <div class="container mt-5">
+
+  <div class="row justify-content-center">
+
+    <div class="col-md-6">
+
+      <form onsubmit="return sendMessage()">
+        <hr/>
+        <br/>
+        <h2 class="text-center"> Send Message</h2>
+         <!--input field for name-->
+        <label class="form-label">Your Name</label>
+        <input type="text" id="name" class="form-control mb-3" required>
+        <!--input field for email-->
+        <label class="form-label">Email</label>
+        <input type="email" id="email" class="form-control mb-3" required>
+         <!--input field for message-->
+        <label class="form-label">Message</label>
+        <textarea id="message" class="form-control mb-3" rows="4" required></textarea>
+
+        <div class="text-center">
+           <!--submit button-->
+          <button type="submit" class="btn btn-dark mb-4">Send Message</button>
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+
+<!--footer include moving banner with welcome message and time-->
+<footer class="bg-dark text-white text-center p-3">
+    <p class="mb-0">&copy; 2026 SQU Events Hub</p>
+</footer>
+
+<script>
+
+//validate form and show confirmation message
+function sendMessage(){
+let name = document.getElementById("name").value;
+let email = document.getElementById("email").value;
+let message = document.getElementById("message").value;
+
+//check if any field empty
+if(name === "" || email === "" || message === ""){
+  alert("Please fill all fields!");
+  return false;
+}
+
+//check if email is valid
+if(email.indexOf("@")===-1){
+  alert("invalid email, Please enter a valid email!");
+  return false;
+}
+
+//show success message
+alert("Message sent successfully!");
+
+
+document.getElementById("name").value = "";
+document.getElementById("email").value = "";
+document.getElementById("message").value = "";
+
+return false;
+}
+
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
