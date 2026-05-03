@@ -91,19 +91,22 @@
 
     <div class="col-md-6">
 
-      <form onsubmit="return sendMessage()">
+      <form onsubmit="return sendMessage()" novalidate>
         <hr/>
         <br/>
         <h2 class="text-center"> Send Message</h2>
          <!--input field for name-->
         <label class="form-label">Your Name</label>
         <input type="text" id="name" class="form-control mb-3" required>
+        <div id="nameError" class="text-danger mb-2"></div>
         <!--input field for email-->
         <label class="form-label">Email</label>
         <input type="email" id="email" class="form-control mb-3" required>
+        <div id="emailError" class="text-danger mb-2"></div>
          <!--input field for message-->
         <label class="form-label">Message</label>
         <textarea id="message" class="form-control mb-3" rows="4" required></textarea>
+        <div id="messageError" class="text-danger mb-2"></div>
 
         <div class="text-center">
            <!--submit button-->
@@ -129,29 +132,55 @@
 
 //validate form and show confirmation message
 function sendMessage(){
-let name = document.getElementById("name").value;
-let email = document.getElementById("email").value;
-let message = document.getElementById("message").value;
 
-//check if any field empty
-if(name === "" || email === "" || message === ""){
-  alert("Please fill all fields!");
-  return false;
+let name = document.getElementById("name");
+let email = document.getElementById("email");
+let message = document.getElementById("message");
+
+let valid = true;
+
+// clear old errors
+document.getElementById("nameError").innerHTML = "";
+document.getElementById("emailError").innerHTML = "";
+document.getElementById("messageError").innerHTML = "";
+
+name.style.border = "";
+email.style.border = "";
+message.style.border = "";
+
+//NAME REGEX
+let namePattern = /^[A-Za-z\s]{3,}$/;
+
+if(!name.value.match(namePattern)){
+  document.getElementById("nameError").innerHTML = "Name must be at least 3 letters (letters only)";
+  name.style.border = "2px solid red";
+  valid = false;
 }
 
-//check if email is valid
-if(email.indexOf("@")===-1){
-  alert("invalid email, Please enter a valid email!");
-  return false;
+//EMAIL REGEX
+let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+if(!email.value.match(emailPattern)){
+  document.getElementById("emailError").innerHTML = "Enter a valid email";
+  email.style.border = "2px solid red";
+  valid = false;
 }
 
-//show success message
-alert("Message sent successfully!");
+//MESSAGE
+if(message.value.trim() === ""){
+  document.getElementById("messageError").innerHTML = "Message is required";
+  message.style.border = "2px solid red";
+  valid = false;
+}
 
+//SUCCESS
+if(valid){
+  alert("Message sent successfully!");
 
-document.getElementById("name").value = "";
-document.getElementById("email").value = "";
-document.getElementById("message").value = "";
+  document.getElementById("name").value = "";
+  document.getElementById("email").value = "";
+  document.getElementById("message").value = "";
+}
 
 return false;
 }

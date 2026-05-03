@@ -205,7 +205,7 @@ function validateEvent(){
   let locationPattern = /^[A-Za-z0-9\s]+$/;
 
   if(location.value === "" || !location.value.match(locationPattern)){
-    document.getElementById("locationError").innerHTML = "Location must be letters only";
+    document.getElementById("locationError").innerHTML = "Location can be letters and numbers";
     location.style.border="2px solid red";
     valid = false;
   }
